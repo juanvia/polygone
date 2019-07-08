@@ -43,4 +43,4 @@
   duplicate(three);
   ```
 */
-ReactDOMRe.renderToElementWithId(<Components.ToDo />, "app");
+ReactDOMRe.renderToElementWithId(<PolygoneComponents.App />, "app");

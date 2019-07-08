@@ -1,0 +1,33 @@
+body {
+  font-family: Roboto;
+  color: #606060;
+  line-height: 1.5rem;
+  font-weight: 400;
+}
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 300;
+}
+.section-header {
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+}
+.bottom {
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+}
+.datacard {
+  margin-right: 16px;
+}
+.datacard-text {
+  margin-bottom: 3.5rem;
+  margin-top: -.5rem;
+  color: #a0a0a0;
+  line-height: 1.2rem;
+}
+.nogutter {
+  margin-bottom: 0;
+}
+.PageTitle {
+  margin-top: 2rem;
+}

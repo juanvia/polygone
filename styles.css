@@ -102,7 +102,7 @@ ul li.done span {
 @media screen and (min-width: 601px) {
     main {
         padding: 0;
-        width: 50rem;
+        /* width: 50rem; */
         margin: 0 auto;
     }
 } 

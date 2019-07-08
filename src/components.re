@@ -28,7 +28,6 @@ module ToDo = {
   let make = () => {
     let (state, dispatch) =
       Model.State.(React.useReducer(reducer, initial_state));
-
     <div>
       <form
         onSubmit={e => {
