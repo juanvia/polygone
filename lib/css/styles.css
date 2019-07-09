@@ -1,6 +1,6 @@
 body {
   font-family: Roboto;
-  color: #606060;
+  color: #505050;
   line-height: 1.5rem;
   font-weight: 400;
 }
@@ -20,10 +20,12 @@ h1, h2, h3, h4, h5, h6 {
   margin-right: 16px;
 }
 .datacard-text {
-  margin-bottom: 3.5rem;
-  margin-top: -.5rem;
-  color: #a0a0a0;
-  line-height: 1.2rem;
+  margin-top: -0.3rem;
+  margin-bottom: 3rem;
+  color: #808080;
+  line-height: 0.9rem;
+  width: 80%;
+  font-size: smaller
 }
 .nogutter {
   margin-bottom: 0;

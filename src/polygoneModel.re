@@ -4,11 +4,7 @@
     * State, representing the state of our application and its reducer
 
 */
-module Flavor = {
-
-};
 module Polynomial = {
-
   type flavor =
     | Traditional
     | Pedantic;
@@ -19,13 +15,27 @@ module Polynomial = {
     variablesNotation: flavor,
     coefficientNotation: flavor,
     dimensions: int,
-    degree: int
+    degree: int,
   };
-
 };
 
 module Action = {
   /** The possible actions of our application */
+  let flavor_of_string = s =>
+    Polynomial.(
+      switch (s) {
+      | "traditional" => Traditional
+      | "pedantic" => Pedantic
+      | _ => Pedantic
+      }
+    );
+  let string_of_flavor = f =>
+    Polynomial.(
+      switch (f) {
+      | Traditional => "traditional"
+      | Pedantic => "pedantic"
+      }
+    );
   type t =
     | SetExponentsArrayValue(string)
     | SetVariablesNotationValue(Polynomial.flavor)
@@ -59,14 +69,29 @@ module State = {
   let reducer = (state, action) => {
     let new_state =
       switch (action) {
-        | Action.SetExponentsArrayValue(exponentsArray) => {...state, exponentsArray: exponentsArray }
-        | Action.SetVariablesNotationValue(selection) => { ...state, variablesNotation: selection, }
-        | Action.SetCoefficientNotationValue(selection) => { ...state, coefficientNotation: selection, }
-        | Action.SetDimensionsValue(selection) => {...state, dimensions: selection}
-        | Action.SetDegreeValue(selection) => {...state, degree: selection}
+      | Action.SetExponentsArrayValue(exponentsArray) => {
+          ...state,
+          exponentsArray,
+        }
+      | Action.SetVariablesNotationValue(selection) => {
+          ...state,
+          variablesNotation: selection,
+        }
+      | Action.SetCoefficientNotationValue(selection) => {
+          ...state,
+          coefficientNotation: selection,
+        }
+      | Action.SetDimensionsValue(selection) => {
+          ...state,
+          dimensions: selection,
+        }
+      | Action.SetDegreeValue(selection) => {...state, degree: selection}
       };
+
     /* We log the state for convenience when developing */
     Js.log(new_state);
+    
     new_state;
+    
   };
 };
