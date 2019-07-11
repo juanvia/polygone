@@ -1,6 +1,6 @@
 body {
   font-family: Roboto;
-  color: #505050;
+  color: #606060;
   line-height: 1.5rem;
   font-weight: 400;
 }
@@ -8,21 +8,21 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: 300;
 }
 .section-header {
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-top: 3rem;
+  margin-bottom: 1rem;
 }
 .bottom {
   position: absolute;
   bottom: 0;
   width: 80%;
 }
-.datacard {
+.selectioncard {
   margin-right: 16px;
 }
-.datacard-text {
+.selectioncard-text {
   margin-top: -0.3rem;
   margin-bottom: 3rem;
-  color: #808080;
+  color: #a0a0a0;
   line-height: 0.9rem;
   width: 80%;
   font-size: smaller
@@ -32,4 +32,28 @@ h1, h2, h3, h4, h5, h6 {
 }
 .PageTitle {
   margin-top: 2rem;
+}
+.HandWriting {
+  font-family: 'Shadows Into Light';
+  line-height: 1;
+  font-size: '1.3rem';
+  font-weight: 'bolder';
+  margin-top: 24px;
+  color: '#5078b7'
+}
+
+.surly {
+  margin-right: 8px;
+}
+.half-surly {
+  margin-right: 4px;
+}
+.surly-half {
+  margin-left: 4px;
+}
+.Matrix {
+  font-family: 'Roboto Mono';
+  font-size: 14;
+  font-weight: 'bolder';
+  margin-top: 24
 }
