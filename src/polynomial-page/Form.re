@@ -2,8 +2,7 @@
   let manyNumberOptions = (start, howMany) => {
     Array.init(
       howMany + 1 - start, 
-      index => 
-        <option >
+      index => <option key={(index+start) -> string_of_int} value={(index+start) -> string_of_int} >
           (index + start) -> string_of_int -> ReasonReact.string
         </option>
     ) 
@@ -21,8 +20,8 @@
     let degree              = state.dimensions -> string_of_int;
     let coefficientNotation = state.coefficientNotation;
     let variablesNotation   = state.variablesNotation;
-    let dimensionsList      = Constants.maxDimensions -> manyNumberOptions(1);
-    let degreeList          = Constants.maxDegree     -> manyNumberOptions(0);
+    let dimensionsList      =  manyNumberOptions(1, Constants.maxDimensions);
+    let degreeList          =  manyNumberOptions(0, Constants.maxDegree);
     let title               = "How to get it?";
     let deck                = "Change some values here and look down. It is waiting for you there.";
 

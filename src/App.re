@@ -15,7 +15,7 @@ let make = () => {
       </GridTwoColumns>
 
       <GridNineColumns>
-        <PolynomialPage.Page state dispatch/>
+        <PolynomialPage state dispatch/>
       </GridNineColumns>
       
       <GridOneColumn> 
