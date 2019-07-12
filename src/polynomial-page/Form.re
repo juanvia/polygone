@@ -2,16 +2,11 @@
   let manyNumberOptions = (start, howMany) => {
     Array.init(
       howMany + 1 - start, 
-      index => {
-
-        let key = (index + start) -> string_of_int;
-        
-        <option key value=key>
-          key -> ReasonReact.string
+      index => 
+        <option >
+          (index + start) -> string_of_int -> ReasonReact.string
         </option>
-
-      }
-    )
+    ) 
   }
 
   let flavorOptions = <>
@@ -49,7 +44,7 @@
           handleChange={e => {
             
             let value = int_of_string(ReactEvent.Form.target(e)##value);
-            Model.Action.SetDimensionsValue(value) -> dispatch;
+            Model.Action.SetDimensionsValue(value) ->dispatch;
           }}
         />
         

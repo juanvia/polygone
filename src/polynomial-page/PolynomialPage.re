@@ -1,6 +1,8 @@
 module MatrixTitle = {
   [@react.component]
-  let make = (~state: Model.State.t) => {
+
+  let make = (~state:Model.State.t) => {
+
     let deck =
       ""
       ++ Utils.dimensionsInWords(state.dimensions)
