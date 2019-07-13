@@ -1,8 +1,30 @@
-  [@react.component]
+  /*
+       <span>
+         <span className="surly"> {dependentVariable} </span>
+         <span className="surly">ReasonReact.string(" = ")</span>
+         <span className="surly">
+           <span className="half-surly">ReasonReact.string("f")(</span>
+           <span>{independentVariables}</span>
+           <span className="surly-half"></span>
+           <span>)<span>
+         </span>
+         <span className="surly">ReasonReact.string(":")</span>
+         <span className="surly">
+           {ReasonReact.string("ℝ")}
+           {superIndex}
+           {ReasonReact.string("￫")}
+           {ReasonReact.string("ℝ")}
+         </span>
+         <span className="surly">{ReasonReact.string(" = ")}</span>
+       </span>;
+
+
+   */
+   [@react.component]
   let make = (~dimensions: int, variablesNotation: Model.Polynomial.flavor) => {
     let _dependentVariable =
       switch (variablesNotation) {
-      | Pedantic => "y"
+      | Pedantic    => "y"
       | Traditional => Char.escaped(Constants.variablesNames.[dimensions])
       };
 

@@ -1,0 +1,25 @@
+{
+  "name": "exponents",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc && babel-node -- use.js"
+  },
+  "description": "Make an array containing the term exponents of a polygonal",
+  "main": "index.js",
+  "author": "Juan V. Vía",
+  "license": "MIT",
+  "private": false,
+  "dependencies": {
+    "@babel/preset-env": "^7.5.4",
+    "@types/ramda": "^0.26.15",
+    "chalk": "^2.4.2",
+    "mathjs": "^6.0.3",
+    "ramda": "^0.26.1"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/node": "^7.5.0",
+    "@types/node": "^12.6.2"
+  }
+}

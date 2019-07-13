@@ -10,22 +10,31 @@ let make = () => {
 
     <GridRow>
 
-      <GridTwoColumns> 
+      <GridTwoColumns>
+
         "Sidebar" -> ReasonReact.string 
+      
       </GridTwoColumns>
 
+
       <GridNineColumns>
+        
         <PolynomialPage state dispatch/>
+      
       </GridNineColumns>
       
-      <GridOneColumn> 
+
+      <GridOneColumn>
+
         state.dimensions          -> string_of_int                 -> ReasonReact.string <br/> 
         state.degree              -> string_of_int                 -> ReasonReact.string <br/>
         state.coefficientNotation -> Model.Action.string_of_flavor -> ReasonReact.string <br/> 
         state.variablesNotation   -> Model.Action.string_of_flavor -> ReasonReact.string <br/> 
+      
       </GridOneColumn>
     
     </GridRow>
   
   </GridContainer>
+  
 };

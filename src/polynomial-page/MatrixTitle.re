@@ -6,7 +6,7 @@
       ++ ", "
       ++ Utils.degreeInWords(state.degree)
       ++ ", "
-      ++ string_of_int(String.length(state.exponentsArray))
+      ++ string_of_int(Array.length(state.exponentsArray))
       ++ " rows.";
 
     let title = "Matrix";

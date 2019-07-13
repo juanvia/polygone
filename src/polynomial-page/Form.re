@@ -13,6 +13,10 @@
     <option value="pedantic">    "Pedantic"    -> ReasonReact.string </option>
   </>;
 
+  let eventValue     = event   => ReactEvent.Form.target(event)##value;
+
+  let flavor_of_string = Model.Action.flavor_of_string;
+
   [@react.component]
   let make = (~state: Model.State.t, ~dispatch: Model.Action.t => unit) => {
 
@@ -20,10 +24,22 @@
     let degree              = state.dimensions -> string_of_int;
     let coefficientNotation = state.coefficientNotation;
     let variablesNotation   = state.variablesNotation;
+
     let dimensionsList      =  manyNumberOptions(1, Constants.maxDimensions);
     let degreeList          =  manyNumberOptions(0, Constants.maxDegree);
+    
     let title               = "How to get it?";
     let deck                = "Change some values here and look down. It is waiting for you there.";
+    
+    let dimensionsAction    = dim =>  Model.Action.SetDimensionsValue(dim);
+    let degreeAction        = deg =>  Model.Action.SetDegreeValue(deg);
+    let coefficientAction   = dim =>  Model.Action.SetCoefficientNotationValue(dim);
+    let variablesAction     = var =>  Model.Action.SetCoefficientNotationValue(var);
+    
+    let handleDimChange     = event => event |> eventValue |> int_of_string    |> dimensionsAction   |> dispatch;
+    let handleDegChange     = event => event |> eventValue |> int_of_string    |> degreeAction       |> dispatch;
+    let handleCofChange     = event => event |> eventValue |> flavor_of_string |> coefficientAction  |> dispatch;
+    let handleVarChange     = event => event |> eventValue |> flavor_of_string |> variablesAction    |> dispatch;
 
     <>
       
@@ -40,11 +56,7 @@
           text="The polynomial's dimensions i.e. the number of independent variables."
           options={ReasonReact.array(dimensionsList)}
           defaultValue=dimensions
-          handleChange={e => {
-            
-            let value = int_of_string(ReactEvent.Form.target(e)##value);
-            Model.Action.SetDimensionsValue(value) ->dispatch;
-          }}
+          handleChange=handleDimChange
         />
         
         <SelectionCard
@@ -52,10 +64,7 @@
           text="The polynomial's degree i.e. the maximum among the sums of exponents of each term."
           options={ReasonReact.array(degreeList)}
           defaultValue=degree
-          handleChange={e => {
-            let value = int_of_string(ReactEvent.Form.target(e)##value);
-            Model.Action.SetDegreeValue(value) -> dispatch;
-          }}
+          handleChange=handleDegChange
         />
         
         <SelectionCard
@@ -63,12 +72,7 @@
           text="Traditional notation is in the form A,B,C,... Pedantic notation uses subindices of a."
           options=flavorOptions
           defaultValue={Model.Action.string_of_flavor(coefficientNotation)}
-          handleChange={e => {
-            let value =
-              Model.Action.flavor_of_string(ReactEvent.Form.target(e)##value);
-            Model.Action.SetCoefficientNotationValue(value) |> dispatch;
-          }}
-          /* Model.Action.SetDimensionsValue(value) |> App.dispatch; */
+          handleChange=handleCofChange
         />
         
         <SelectionCard
@@ -76,12 +80,7 @@
           text="Traditional notation is in the form x,y,z,... Pedantic notation uses subindices of x."
           options=flavorOptions
           defaultValue={Model.Action.string_of_flavor(variablesNotation)}
-          handleChange={e => {
-            let value = ReactEvent.Form.target(e)##value;
-            let value = Model.Action.flavor_of_string(value);
-            Model.Action.SetVariablesNotationValue(value) |> dispatch;
-          }}
-          /* Model.Action.SetDimensionsValue(value) |> App.dispatch; */
+          handleChange=handleVarChange
         />
 
       </GridRow>

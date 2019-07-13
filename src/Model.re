@@ -4,19 +4,18 @@
     * State, representing the state of our application and its reducer
 
 */
+
 module Polynomial = {
 
-  type flavor =
-    | Traditional
-    | Pedantic;
+  type flavor = Traditional | Pedantic;
 
   /** The type of a task in the ToDo app. */
   type t = {
-    exponentsArray: string,
-    variablesNotation: flavor,
+    exponentsArray:      array(array(int)),
+    variablesNotation:   flavor,
     coefficientNotation: flavor,
-    dimensions: int,
-    degree: int,
+    dimensions:          int,
+    degree:              int,
   };
 };
 
@@ -26,19 +25,19 @@ module Action = {
     Polynomial.(
       switch (s) {
       | "traditional" => Traditional
-      | "pedantic" => Pedantic
-      | _ => Pedantic
+      | "pedantic"    => Pedantic
+      | _             => Pedantic
       }
     );
   let string_of_flavor = f =>
     Polynomial.(
       switch (f) {
       | Traditional => "traditional"
-      | Pedantic => "pedantic"
+      | Pedantic    => "pedantic"
       }
     );
   type t =
-    | SetExponentsArrayValue(string)
+    | SetExponentsArrayValue(array(array(int)))
     | SetVariablesNotationValue(Polynomial.flavor)
     | SetCoefficientNotationValue(Polynomial.flavor)
     | SetDimensionsValue(int)
@@ -46,47 +45,44 @@ module Action = {
 };
 
 module State = {
+  
   /** The type of the state of the application. */
   type t = {
-    exponentsArray: string,
-    variablesNotation: Polynomial.flavor,
+    exponentsArray:      array(array(int)),
+    variablesNotation:   Polynomial.flavor,
     coefficientNotation: Polynomial.flavor,
-    dimensions: int,
-    degree: int,
+    dimensions:          int,
+    degree:              int,
   };
+
+  /** Let's pick some initial values */
+  let dimensions          = 3;
+  let degree              = 6;
+  let coefficientNotation = Polynomial.Traditional;
+  let variablesNotation   = Polynomial.Traditional;
+  let exponentsArray      = Exponents.exponents(dimensions, degree);
 
   /** The initial state of the application */
   let initial_state = {
-    exponentsArray: "",
-    variablesNotation: Traditional,
-    coefficientNotation: Pedantic,
-    dimensions: 3,
-    degree: 6,
+    variablesNotation,
+    coefficientNotation,
+    dimensions,
+    degree,
+    exponentsArray
   };
 
   /** Our reducer works very similarly to other reducers you may have seen
       before. If receives the current state, and an action, and will compute
       a new state for the application to continue with. */
   let reducer = (state, action) => {
+
     let new_state =
       switch (action) {
-      | Action.SetExponentsArrayValue(exponentsArray) => {
-          ...state,
-          exponentsArray,
-        }
-      | Action.SetVariablesNotationValue(selection) => {
-          ...state,
-          variablesNotation: selection,
-        }
-      | Action.SetCoefficientNotationValue(selection) => {
-          ...state,
-          coefficientNotation: selection,
-        }
-      | Action.SetDimensionsValue(selection) => {
-          ...state,
-          dimensions: selection,
-        }
-      | Action.SetDegreeValue(selection) => {...state, degree: selection}
+      | Action.SetExponentsArrayValue(exponentsArray)           => {...state, exponentsArray,      }
+      | Action.SetVariablesNotationValue(variablesNotation)     => {...state, variablesNotation,   }
+      | Action.SetCoefficientNotationValue(coefficientNotation) => {...state, coefficientNotation, }
+      | Action.SetDimensionsValue(dimensions)                   => {...state, dimensions,          }
+      | Action.SetDegreeValue(degree)                           => {...state, degree               }
       };
 
     /* We log the state for convenience when developing */

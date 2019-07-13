@@ -4,7 +4,7 @@
       ""
       ++ state.dimensions     -> Utils.dimensionsInWords         ++ ", "
       ++ state.degree         -> Utils.degreeInWords             ++ ", "
-      ++ state.exponentsArray -> String.length -> string_of_int  ++ " terms.";
+      ++ state.exponentsArray -> Array.length -> string_of_int   ++ " terms.";
 
     let title = "Polynomial";
 
