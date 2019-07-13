@@ -45,14 +45,14 @@ module Action = {
 };
 
 module State = {
-  
+
   /** The type of the state of the application. */
   type t = {
-    exponentsArray:      array(array(int)),
-    variablesNotation:   Polynomial.flavor,
-    coefficientNotation: Polynomial.flavor,
-    dimensions:          int,
-    degree:              int,
+    exponentsArray:       array(array(int)),
+    variablesNotation:    Polynomial.flavor,
+    coefficientNotation:  Polynomial.flavor,
+    dimensions:           int,
+    degree:               int,
   };
 
   /** Let's pick some initial values */
@@ -77,6 +77,7 @@ module State = {
   let reducer = (state, action) => {
 
     let new_state =
+
       switch (action) {
       | Action.SetExponentsArrayValue(exponentsArray)           => {...state, exponentsArray,      }
       | Action.SetVariablesNotationValue(variablesNotation)     => {...state, variablesNotation,   }

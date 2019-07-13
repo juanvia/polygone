@@ -17,7 +17,7 @@ console.log('\n'+chalk.green('✓') +`   Ah! you had brought very good input to 
 
 const n = dim
 const m = combinations(dim+deg,deg)
-console.log(`☛   My quest is then to generate a ${m} x ${n} matrix`)
+console.log(`☛   Our quest is then to generate a ${m} x ${n} matrix. The destiny of the app rest in our trembling hands.`)
 process.stdout.write(`✈   Dwarfs working in Moria... `)
 
 // Process
@@ -37,6 +37,6 @@ console.log("")
 if (matrix.length != m || matrix[0].length != n)
   console.log(chalk.red(`☹   Alas the matrix should be of ${m} rows and ${n} columns and is of ${matrix.length} rows and ${matrix[0].length} columns.`))
 else
-  console.log(chalk.green(`☺   Rejoice! The matrix should be of ${m} rows and ${n} columns and indeed is of that size.`))
+  console.log(chalk.green(`☺   Rejoice! The matrix should be of ${m} rows and ${n} columns and of that size it is indeed.`))
 console.log("")
 

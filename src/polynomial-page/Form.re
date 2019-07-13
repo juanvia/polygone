@@ -35,11 +35,21 @@
     let degreeAction        = deg =>  Model.Action.SetDegreeValue(deg);
     let coefficientAction   = dim =>  Model.Action.SetCoefficientNotationValue(dim);
     let variablesAction     = var =>  Model.Action.SetCoefficientNotationValue(var);
+    let exponentsAction     = exp =>  Model.Action.SetExponentsArrayValue(exp);
     
-    let handleDimChange     = event => event |> eventValue |> int_of_string    |> dimensionsAction   |> dispatch;
-    let handleDegChange     = event => event |> eventValue |> int_of_string    |> degreeAction       |> dispatch;
-    let handleCofChange     = event => event |> eventValue |> flavor_of_string |> coefficientAction  |> dispatch;
-    let handleVarChange     = event => event |> eventValue |> flavor_of_string |> variablesAction    |> dispatch;
+    let dispatchDimChange     = event => event |> eventValue |> int_of_string    |> dimensionsAction   |> dispatch;
+    let dispatchDegChange     = event => event |> eventValue |> int_of_string    |> degreeAction       |> dispatch;
+    let dispatchCofChange     = event => event |> eventValue |> flavor_of_string |> coefficientAction  |> dispatch;
+    let dispatchVarChange     = event => event |> eventValue |> flavor_of_string |> variablesAction    |> dispatch;
+
+    let dim                   = dimensions -> int_of_string;
+    let deg                   = degree     -> int_of_string;
+    let makeExponentsArray    = () => Exponents.exponents (dim, deg) |> exponentsAction |> dispatch;
+
+    let handleDimChange     = event => {event |> dispatchDimChange; makeExponentsArray()};
+    let handleDegChange     = event => {event |> dispatchDegChange; makeExponentsArray()};
+    let handleCofChange     = event => {event |> dispatchCofChange; makeExponentsArray()};
+    let handleVarChange     = event => {event |> dispatchVarChange; makeExponentsArray()};
 
     <>
       
