@@ -1,7 +1,7 @@
 [@react.component]
 let make = (~state: Model.State.t) => {
   let exponents =
-    switch (Js.Json.stringifyAny(state.exponentsArray)) {
+    switch (Js.Json.stringifyAny(state.terms)) {
     | None => ""
     | Some(transformed) => transformed
     };

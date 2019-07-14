@@ -7,13 +7,11 @@
 
 module Polynomial = {
 
-  type flavor = Traditional | Pedantic;
-
   /** The type of a task in the ToDo app. */
   type t = {
-    exponentsArray:      array(array(int)),
-    variablesNotation:   flavor,
-    coefficientNotation: flavor,
+    terms:      array(array(int)),
+    variables_notation:   Flavor.t,
+    coefficient_notation: Flavor.t,
     dimensions:          int,
     degree:              int,
   };
@@ -21,25 +19,11 @@ module Polynomial = {
 
 module Action = {
   /** The possible actions of our application */
-  let flavor_of_string = s =>
-    Polynomial.(
-      switch (s) {
-      | "traditional" => Traditional
-      | "pedantic"    => Pedantic
-      | _             => Pedantic
-      }
-    );
-  let string_of_flavor = f =>
-    Polynomial.(
-      switch (f) {
-      | Traditional => "traditional"
-      | Pedantic    => "pedantic"
-      }
-    );
+
   type t =
     | SetExponentsArrayValue(array(array(int)))
-    | SetVariablesNotationValue(Polynomial.flavor)
-    | SetCoefficientNotationValue(Polynomial.flavor)
+    | SetVariablesNotationValue(Flavor.t)
+    | SetCoefficientNotationValue(Flavor.t)
     | SetDimensionsValue(int)
     | SetDegreeValue(int);
 };
@@ -48,27 +32,28 @@ module State = {
 
   /** The type of the state of the application. */
   type t = {
-    exponentsArray:       array(array(int)),
-    variablesNotation:    Polynomial.flavor,
-    coefficientNotation:  Polynomial.flavor,
+    terms:                array(array(int)),
+    variables_notation:    Flavor.t,
+    coefficient_notation:  Flavor.t,
     dimensions:           int,
     degree:               int,
   };
 
+  
   /** Let's pick some initial values */
-  let dimensions          = 3;
-  let degree              = 6;
-  let coefficientNotation = Polynomial.Traditional;
-  let variablesNotation   = Polynomial.Traditional;
-  let exponentsArray      = Exponents.exponents(dimensions, degree);
+  let dimensions                   = 3;
+  let degree                       = 6;
+  let coefficient_notation:Flavor.t = Traditional;
+  let variables_notation:Flavor.t   = Traditional;
+  let terms                        = Exponents.exponents(dimensions, degree);
 
   /** The initial state of the application */
   let initial_state = {
-    variablesNotation,
-    coefficientNotation,
+    variables_notation,
+    coefficient_notation,
     dimensions,
     degree,
-    exponentsArray
+    terms
   };
 
   /** Our reducer works very similarly to other reducers you may have seen
@@ -77,9 +62,9 @@ module State = {
   let rec reducer = (state, action) => {
     let new_state =
       switch (action) {
-      | Action.SetExponentsArrayValue(exponentsArray)           => {...state, exponentsArray,      }
-      | Action.SetVariablesNotationValue(variablesNotation)     => {...state, variablesNotation,   }
-      | Action.SetCoefficientNotationValue(coefficientNotation) => {...state, coefficientNotation, }
+      | Action.SetExponentsArrayValue(terms)                    => {...state, terms,               }
+      | Action.SetVariablesNotationValue(variables_notation)     => {...state, variables_notation,   }
+      | Action.SetCoefficientNotationValue(coefficient_notation) => {...state, coefficient_notation, }
       | Action.SetDimensionsValue(dimensions)                   => {...state, dimensions,          }
       | Action.SetDegreeValue(degree)                           => {...state, degree               }
       };
@@ -92,10 +77,10 @@ module State = {
        The changes in dimensions or degree are making the exponents array obsolete.
        Then, in those cases, we must recalculate that array before return. 
     */
-    let makeExponentsArray = ()    => Exponents.exponents(new_state.dimensions, new_state.degree)
+    let makeTerms = ()             => Exponents.exponents(new_state.dimensions, new_state.degree)
     switch (action) {
-    | Action.SetDimensionsValue(_) => reducer(new_state, Action.SetExponentsArrayValue(makeExponentsArray()))
-    | Action.SetDegreeValue(_)     => reducer(new_state, Action.SetExponentsArrayValue(makeExponentsArray()));
+    | Action.SetDimensionsValue(_) => reducer(new_state, Action.SetExponentsArrayValue(makeTerms()))
+    | Action.SetDegreeValue(_)     => reducer(new_state, Action.SetExponentsArrayValue(makeTerms()));
     | _ => new_state
     };
 

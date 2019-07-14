@@ -1,4 +1,4 @@
 let maxDimensions    = 5;
 let maxDegree        = 9;
-let variablesNames   = "xyztuvw";
+let variableNames   = "xyztuvw";
 let coefficientNames = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";

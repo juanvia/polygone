@@ -1,4 +1,3 @@
-let spoiledTitle = "uu";
 [@react.component]
 let make = (~title, ~defaultValue, ~text, ~options, ~handleChange) =>
     <div className="selectioncard">

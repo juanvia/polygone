@@ -14,15 +14,15 @@
   </>;
 
 
-  let flavor_of_string = Model.Action.flavor_of_string;
+  let flavor_of_string = Flavor.flavor_of_string;
 
   [@react.component]
   let make = (~state: Model.State.t, ~dispatch: Model.Action.t => unit) => {
 
     let dimensions          = state.dimensions -> string_of_int;
-    let degree              = state.dimensions -> string_of_int;
-    let coefficientNotation = state.coefficientNotation;
-    let variablesNotation   = state.variablesNotation;
+    let degree              = state.degree     -> string_of_int;
+    let coefficient_notation = state.coefficient_notation;
+    let variables_notation   = state.variables_notation;
 
     let dimensionsList      =  manyNumberOptions(1, Constants.maxDimensions);
     let degreeList          =  manyNumberOptions(0, Constants.maxDegree);
@@ -76,7 +76,7 @@
             title="Coefficient notation"
             text="Traditional notation is in the form A,B,C,... Pedantic notation uses subindices of a."
             options=flavorOptions
-            defaultValue={Model.Action.string_of_flavor(coefficientNotation)}
+            defaultValue={Flavor.string_of_flavor(coefficient_notation)}
             handleChange=handleCofChange
           />
         </GridColumn>
@@ -86,7 +86,7 @@
             title="Variables notation"
             text="Traditional notation is in the form x,y,z,... Pedantic notation uses subindices of x."
             options=flavorOptions
-            defaultValue={Model.Action.string_of_flavor(variablesNotation)}
+            defaultValue={Flavor.string_of_flavor(variables_notation)}
             handleChange=handleVarChange
           />
         </GridColumn>

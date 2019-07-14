@@ -26,10 +26,10 @@ let make = () => {
 
       <GridOneColumn>
 
-        state.dimensions          -> string_of_int                 -> ReasonReact.string <br/> 
-        state.degree              -> string_of_int                 -> ReasonReact.string <br/>
-        state.coefficientNotation -> Model.Action.string_of_flavor -> ReasonReact.string <br/> 
-        state.variablesNotation   -> Model.Action.string_of_flavor -> ReasonReact.string <br/> 
+        state.dimensions          -> string_of_int           -> ReasonReact.string <br/> 
+        state.degree              -> string_of_int           -> ReasonReact.string <br/>
+        state.coefficient_notation -> Flavor.string_of_flavor -> ReasonReact.string <br/> 
+        state.variables_notation   -> Flavor.string_of_flavor -> ReasonReact.string <br/> 
       
       </GridOneColumn>
     
