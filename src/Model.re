@@ -74,10 +74,8 @@ module State = {
   /** Our reducer works very similarly to other reducers you may have seen
       before. If receives the current state, and an action, and will compute
       a new state for the application to continue with. */
-  let reducer = (state, action) => {
-
+  let rec reducer = (state, action) => {
     let new_state =
-
       switch (action) {
       | Action.SetExponentsArrayValue(exponentsArray)           => {...state, exponentsArray,      }
       | Action.SetVariablesNotationValue(variablesNotation)     => {...state, variablesNotation,   }
@@ -89,6 +87,17 @@ module State = {
     /* We log the state for convenience when developing */
     Js.log(new_state);
 
-    new_state;
+    /* Ok. But...
+       Our state may be 'dirty'. 
+       The changes in dimensions or degree are making the exponents array obsolete.
+       Then, in those cases, we must recalculate that array before return. 
+    */
+    let makeExponentsArray = ()    => Exponents.exponents(new_state.dimensions, new_state.degree)
+    switch (action) {
+    | Action.SetDimensionsValue(_) => reducer(new_state, Action.SetExponentsArrayValue(makeExponentsArray()))
+    | Action.SetDegreeValue(_)     => reducer(new_state, Action.SetExponentsArrayValue(makeExponentsArray()));
+    | _ => new_state
+    };
+
   };
 };

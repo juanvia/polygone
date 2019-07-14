@@ -33,13 +33,13 @@ h1, h2, h3, h4, h5, h6 {
 .PageTitle {
   margin-top: 2rem;
 }
-.HandWriting {
+.Handwriting {
   font-family: 'Shadows Into Light';
   line-height: 1;
-  font-size: '1.3rem';
-  font-weight: 'bolder';
+  font-size: 1.3rem;
+  font-weight: bolder;
   margin-top: 24px;
-  color: '#5078b7'
+  color: #5078b7
 }
 
 .surly {

@@ -1,9 +1,5 @@
-
-
 [@react.component]
-let make = (~state: Model.State.t, ~dispatch: Model.Action.t => unit) => 
-  
-  <div>
+let make = (~state: Model.State.t, ~dispatch: Model.Action.t => unit) => <div>
 
     <PageTitle />
     

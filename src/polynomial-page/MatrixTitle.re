@@ -1,7 +1,7 @@
   [@react.component]
   let make = (~state: Model.State.t) => {
-    let deck =
-      ""
+    
+    let deck = ""
       ++ Utils.dimensionsInWords(state.dimensions)
       ++ ", "
       ++ Utils.degreeInWords(state.degree)
@@ -11,5 +11,5 @@
 
     let title = "Matrix";
 
-    <div> <SectionHeader title deck /> </div>;
+    <SectionHeader title deck />;
   };

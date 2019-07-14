@@ -13,7 +13,6 @@
     <option value="pedantic">    "Pedantic"    -> ReasonReact.string </option>
   </>;
 
-  let eventValue     = event   => ReactEvent.Form.target(event)##value;
 
   let flavor_of_string = Model.Action.flavor_of_string;
 
@@ -34,64 +33,63 @@
     let dimensionsAction    = dim =>  Model.Action.SetDimensionsValue(dim);
     let degreeAction        = deg =>  Model.Action.SetDegreeValue(deg);
     let coefficientAction   = dim =>  Model.Action.SetCoefficientNotationValue(dim);
-    let variablesAction     = var =>  Model.Action.SetCoefficientNotationValue(var);
-    let exponentsAction     = exp =>  Model.Action.SetExponentsArrayValue(exp);
+    let variablesAction     = var =>  Model.Action.SetVariablesNotationValue(var);
     
-    let dispatchDimChange     = event => event |> eventValue |> int_of_string    |> dimensionsAction   |> dispatch;
-    let dispatchDegChange     = event => event |> eventValue |> int_of_string    |> degreeAction       |> dispatch;
-    let dispatchCofChange     = event => event |> eventValue |> flavor_of_string |> coefficientAction  |> dispatch;
-    let dispatchVarChange     = event => event |> eventValue |> flavor_of_string |> variablesAction    |> dispatch;
-
-    let dim                   = dimensions -> int_of_string;
-    let deg                   = degree     -> int_of_string;
-    let makeExponentsArray    = () => Exponents.exponents (dim, deg) |> exponentsAction |> dispatch;
-
-    let handleDimChange     = event => {event |> dispatchDimChange; makeExponentsArray()};
-    let handleDegChange     = event => {event |> dispatchDegChange; makeExponentsArray()};
-    let handleCofChange     = event => {event |> dispatchCofChange; makeExponentsArray()};
-    let handleVarChange     = event => {event |> dispatchVarChange; makeExponentsArray()};
+    let eventValue          = event => ReactEvent.Form.target(event)##value;
+    let handleDimChange     = event => eventValue(event) |> int_of_string    |> dimensionsAction   |> dispatch;
+    let handleDegChange     = event => eventValue(event) |> int_of_string    |> degreeAction       |> dispatch;
+    let handleCofChange     = event => eventValue(event) |> flavor_of_string |> coefficientAction  |> dispatch;
+    let handleVarChange     = event => eventValue(event) |> flavor_of_string |> variablesAction    |> dispatch;
 
     <>
       
       <GridRow>
-        
-        <SectionHeader title deck />
-      
+        <GridTwelveColumns>
+          <SectionHeader title deck />
+        </GridTwelveColumns>
       </GridRow>
       
       <GridRow>
 
-        <SelectionCard
-          title="Dimensions"
-          text="The polynomial's dimensions i.e. the number of independent variables."
-          options={ReasonReact.array(dimensionsList)}
-          defaultValue=dimensions
-          handleChange=handleDimChange
-        />
+        <GridColumn>
+          <SelectionCard
+            title="Dimensions"
+            text="The polynomial's dimensions i.e. the number of independent variables."
+            options={ReasonReact.array(dimensionsList)}
+            defaultValue=dimensions
+            handleChange=handleDimChange
+          />
+        </GridColumn>
         
-        <SelectionCard
-          title="Degree"
-          text="The polynomial's degree i.e. the maximum among the sums of exponents of each term."
-          options={ReasonReact.array(degreeList)}
-          defaultValue=degree
-          handleChange=handleDegChange
-        />
+        <GridColumn>
+          <SelectionCard
+            title="Degree"
+            text="The polynomial's degree i.e. the maximum among the sums of exponents of each term."
+            options={ReasonReact.array(degreeList)}
+            defaultValue=degree
+            handleChange=handleDegChange
+          />
+        </GridColumn>
         
-        <SelectionCard
-          title="Coefficient notation"
-          text="Traditional notation is in the form A,B,C,... Pedantic notation uses subindices of a."
-          options=flavorOptions
-          defaultValue={Model.Action.string_of_flavor(coefficientNotation)}
-          handleChange=handleCofChange
-        />
+        <GridColumn>
+          <SelectionCard
+            title="Coefficient notation"
+            text="Traditional notation is in the form A,B,C,... Pedantic notation uses subindices of a."
+            options=flavorOptions
+            defaultValue={Model.Action.string_of_flavor(coefficientNotation)}
+            handleChange=handleCofChange
+          />
+        </GridColumn>
         
-        <SelectionCard
-          title="Variables notation"
-          text="Traditional notation is in the form x,y,z,... Pedantic notation uses subindices of x."
-          options=flavorOptions
-          defaultValue={Model.Action.string_of_flavor(variablesNotation)}
-          handleChange=handleVarChange
-        />
+        <GridColumn>
+          <SelectionCard
+            title="Variables notation"
+            text="Traditional notation is in the form x,y,z,... Pedantic notation uses subindices of x."
+            options=flavorOptions
+            defaultValue={Model.Action.string_of_flavor(variablesNotation)}
+            handleChange=handleVarChange
+          />
+        </GridColumn>
 
       </GridRow>
 

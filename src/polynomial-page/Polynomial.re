@@ -1,3 +1,16 @@
   [@react.component]
-  let make = (~state: Model.State.t) =>
-    <div className="row"> <PolynomialTitle state /> <Handwriting state /> </div>;
+  let make = (~state: Model.State.t) => <>
+
+    <GridRow>
+      <GridTwelveColumns> 
+        <PolynomialTitle state /> 
+      </GridTwelveColumns> 
+    </GridRow> 
+
+    <GridRow>
+      <GridTwelveColumns> 
+        <Handwriting state /> 
+      </GridTwelveColumns> 
+    </GridRow>
+    
+  </>; 
