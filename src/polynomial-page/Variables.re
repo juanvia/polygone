@@ -40,12 +40,12 @@ let make = (~term: array(int), ~variables_notation:Flavor.t) => {
   };
 
   let pedantic_variable_of_index = (variableIndex: int, exponent) =>
-    <span>
+    <span key={variableIndex -> string_of_int}>
       {variable_pedantic_notation(exponent, variableIndex)}
     </span>;
 
   let traditional_variable_of_index = (variableIndex: int, exponent) =>
-    <span>
+    <span key={variableIndex -> string_of_int}>
       {variable_traditional_notation(exponent, variableIndex)}
     </span>;
 
