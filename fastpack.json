@@ -12,6 +12,10 @@
       "process": "url-loader"
     },
     {
+      "re": "\\.png$",
+      "process": "url-loader"
+    },
+    {
       "re": "\\.css$",
       "process": "style-loader!css-loader"
     }

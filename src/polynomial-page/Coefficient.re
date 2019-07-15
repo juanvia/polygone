@@ -8,9 +8,6 @@ let make = (~termIndex, ~coefficient_notation, ~terms_length) => {
     | _                       => coefficient_notation
     };
 
-  Printf.printf("max_allowed:%d, terms_length:%d, effective_notation:%s\n", max_allowed, terms_length, Flavor.string_of_flavor(effective_notation));
-  Printf.printf("Constants.coefficientNames:%s, termIndex:%d, 1:%d\n", Constants.coefficientNames, termIndex, 1);
-
   // Ok. Let's do it
   switch (effective_notation) {
   | Traditional => <> {String.sub(Constants.coefficientNames, termIndex, 1)->ReasonReact.string} </>

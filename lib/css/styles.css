@@ -11,6 +11,9 @@ h1, h2, h3, h4, h5, h6 {
   margin-top: 3rem;
   margin-bottom: 1rem;
 }
+.img-polynomial {
+  margin-top: 10rem;
+}
 .bottom {
   position: absolute;
   bottom: 0;
@@ -32,6 +35,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .PageTitle {
   margin-top: 2rem;
+  margin-bottom: 0;
 }
 .Handwriting {
   font-family: 'Shadows Into Light';

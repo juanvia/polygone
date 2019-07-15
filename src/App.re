@@ -12,7 +12,7 @@ let make = () => {
 
       <GridTwoColumns>
 
-        "Sidebar" -> ReasonReact.string 
+        <Sidebar />
       
       </GridTwoColumns>
 
@@ -26,11 +26,8 @@ let make = () => {
 
       <GridOneColumn>
 
-        state.dimensions          -> string_of_int           -> ReasonReact.string <br/> 
-        state.degree              -> string_of_int           -> ReasonReact.string <br/>
-        state.coefficient_notation -> Flavor.string_of_flavor -> ReasonReact.string <br/> 
-        state.variables_notation   -> Flavor.string_of_flavor -> ReasonReact.string <br/> 
-      
+        <span/>
+
       </GridOneColumn>
     
     </GridRow>
