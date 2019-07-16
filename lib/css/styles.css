@@ -12,7 +12,16 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 1rem;
 }
 .img-polynomial {
-  margin-top: 10rem;
+  margin-top: 0.8rem;
+  width:  10rem;
+  height: 10rem;
+  border-radius: 10rem;
+  opacity: 0.2;
+  margin-top: 3rem;
+  margin-left: 2rem;
+  /* -webkit-box-shadow: 6px 10px 15px -1px rgba(240,240,240,1);
+  -moz-box-shadow: 6px 10px 15px -1px rgba(240,240,240,1);
+  box-shadow: 6px 10px 15px -1px rgba(240,240,240,1); */
 }
 .bottom {
   position: absolute;
@@ -65,4 +74,7 @@ h1, h2, h3, h4, h5, h6 {
   color: #808080;
   font-size: 0.8rem;
   line-height: 1rem;
+}
+.slightly-displaced {
+  margin-left: 2px;
 }

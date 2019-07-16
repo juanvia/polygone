@@ -4,7 +4,7 @@
         events. */
 [@react.component]
 let make = () => {
-  let (state, dispatch: Model.Action.t => unit) = Model.State.(React.useReducer(reducer, initial_state));
+  let (state, dispatch) = Model.State.(React.useReducer(reducer, initial_state));
 
   <GridContainer>
 

@@ -1,5 +1,5 @@
 [@react.component]
 let make = () => 
-  <div>
-    <img src="../../lib/img/polynomial2.png" className="img-fluid img-polynomial" alt="Responsive image"/>
+  <div className="image-container">
+    <img src="../../lib/img/lista.jpeg" className="img-fluid img-polynomial" alt="Responsive image"/>
   </div>;

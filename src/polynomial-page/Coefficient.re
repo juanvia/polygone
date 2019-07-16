@@ -14,7 +14,7 @@ let make = (~termIndex, ~coefficient_notation, ~terms_length) => {
   | _ =>
     <>
       "a"->ReasonReact.string
-      <sub> {(terms_length-termIndex-1)->string_of_int->ReasonReact.string} </sub>
+      <sub className="slightly-displaced"> {(terms_length-termIndex-1)->string_of_int->ReasonReact.string} </sub>
     </>
   };
 };

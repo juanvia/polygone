@@ -18,7 +18,7 @@ let make = (~state: Model.State.t) => {
            {
              let itsLetter = String.make(1, Constants.variableNames.[i]);
              itsLetter
-             ++ (i < dimensions - 1 ? ", " : "")
+             ++ (i < dimensions - 1 ? " , " : "")
              |> ReasonReact.string;
            }
          </span>
@@ -32,7 +32,7 @@ let make = (~state: Model.State.t) => {
          <span key={i -> string_of_int}>
            "x" -> ReasonReact.string
            <sub> {(i + 1) -> string_of_int -> ReasonReact.string} </sub>
-           (i < dimensions - 1 ? ", " : "") -> ReasonReact.string
+           (i < dimensions - 1 ? " , " : "") -> ReasonReact.string
          </span>
        )
        |> ReasonReact.array}
