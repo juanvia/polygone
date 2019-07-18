@@ -42,7 +42,7 @@ module State = {
   
   /** Let's pick some initial values */
   let dimensions                   = 3;
-  let degree                       = 6;
+  let degree                       = 3;
   let coefficient_notation:Flavor.t = Traditional;
   let variables_notation:Flavor.t   = Traditional;
   let terms                        = Exponents.exponents(dimensions, degree);

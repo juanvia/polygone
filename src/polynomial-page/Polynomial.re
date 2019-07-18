@@ -2,15 +2,15 @@
   let make = (~state: Model.State.t) => <>
 
     <GridRow>
-      <GridTwelveColumns> 
-        <PolynomialTitle state /> 
-      </GridTwelveColumns> 
-    </GridRow> 
 
-    <GridRow>
-      <GridTwelveColumns> 
+      <GridTwelveColumns>
+
+        <PolynomialTitle state /> 
+        
         <Handwriting state /> 
+      
       </GridTwelveColumns> 
+    
     </GridRow>
     
   </>; 

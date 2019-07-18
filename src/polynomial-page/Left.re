@@ -5,7 +5,7 @@ let make = (~state: Model.State.t) => {
   let dimensions = state.dimensions;
   let variables_notation = state.variables_notation;
 
-  let dependentVariable =
+  let dependent_variable =
     switch (variables_notation) {
     | Pedantic => "y"
     | Traditional => Char.escaped(Constants.variableNames.[dimensions])
@@ -17,6 +17,7 @@ let make = (~state: Model.State.t) => {
          <span key={i -> string_of_int}>
            {
              let itsLetter = String.make(1, Constants.variableNames.[i]);
+             
              itsLetter
              ++ (i < dimensions - 1 ? " , " : "")
              |> ReasonReact.string;
@@ -46,7 +47,7 @@ let make = (~state: Model.State.t) => {
   </>;
 
   <>
-    <span className="surly"> dependentVariable->ReasonReact.string </span>
+    <span className="surly"> dependent_variable->ReasonReact.string </span>
     <span className="surly"> " = "->ReasonReact.string </span>
     <span className="surly">
       <span className="half-surly"> "f("->ReasonReact.string </span>

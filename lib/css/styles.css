@@ -47,7 +47,8 @@ h1, h2, h3, h4, h5, h6 {
   margin-bottom: 0;
 }
 .Handwriting {
-  font-family: 'Shadows Into Light';
+  /* font-family: 'Satisfy,"Dancing Script","Shadows Into Light"'; */
+  font-family: 'Shadows Into Light', cursive;
   line-height: 1.3;
   font-size: 1.5rem;
   font-weight: bolder;
