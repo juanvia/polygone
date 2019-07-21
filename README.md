@@ -1,8 +1,10 @@
 # polygone
 
-Based on https://github.com/SRC-technology/lab-template.bootstrap-reason-react-app
 
-Thank you SRC people!
+![alt text](assets/page.png "This is how looks the example application")
+
+
+Based on the very useful https://github.com/SRC-technology/lab-template.bootstrap-reason-react-app
 
 ## Install
 
@@ -14,8 +16,6 @@ $ yarn build
 ```
 
 ## View
-
-![alt text](assets/page.png "This is how looks the example application")
 
 
 ```
