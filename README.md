@@ -15,6 +15,9 @@ $ yarn build
 
 ## View
 
+![alt text](assets/page.png "This is how looks the example application")
+
+
 ```
 $ yarn global add serve
 $ serve
