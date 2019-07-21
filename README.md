@@ -1,5 +1,9 @@
 # polygone
 
+Based on https://github.com/SRC-technology/lab-template.bootstrap-reason-react-app
+
+Thank you SRC people!
+
 ## Install
 
 You can install all the needed dependencies by running `yarn`.
