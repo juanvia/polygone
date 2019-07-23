@@ -33,8 +33,8 @@ module State = {
   /** The type of the state of the application. */
   type t = {
     terms:                array(array(int)),
-    variables_notation:    Flavor.t,
-    coefficient_notation:  Flavor.t,
+    variables_notation:   Flavor.t,
+    coefficient_notation: Flavor.t,
     dimensions:           int,
     degree:               int,
   };
@@ -62,11 +62,11 @@ module State = {
   let rec reducer = (state, action) => {
     let new_state =
       switch (action) {
-      | Action.SetExponentsArrayValue(terms)                    => {...state, terms,               }
+      | Action.SetExponentsArrayValue(terms)                     => {...state, terms,                }
       | Action.SetVariablesNotationValue(variables_notation)     => {...state, variables_notation,   }
       | Action.SetCoefficientNotationValue(coefficient_notation) => {...state, coefficient_notation, }
-      | Action.SetDimensionsValue(dimensions)                   => {...state, dimensions,          }
-      | Action.SetDegreeValue(degree)                           => {...state, degree               }
+      | Action.SetDimensionsValue(dimensions)                    => {...state, dimensions,           }
+      | Action.SetDegreeValue(degree)                            => {...state, degree                }
       };
 
     /* We log the state for convenience when developing */
@@ -77,10 +77,10 @@ module State = {
        The changes in dimensions or degree are making the exponents array obsolete.
        Then, in those cases, we must recalculate that array before return. 
     */
-    let makeTerms = ()             => Exponents.exponents(new_state.dimensions, new_state.degree)
+    let the_terms = Exponents.exponents(new_state.dimensions, new_state.degree)
     switch (action) {
-    | Action.SetDimensionsValue(_) => reducer(new_state, Action.SetExponentsArrayValue(makeTerms()))
-    | Action.SetDegreeValue(_)     => reducer(new_state, Action.SetExponentsArrayValue(makeTerms()));
+    | Action.SetDimensionsValue(_) => reducer(new_state, the_terms -> Action.SetExponentsArrayValue)
+    | Action.SetDegreeValue(_)     => reducer(new_state, the_terms -> Action.SetExponentsArrayValue);
     | _ => new_state
     };
 

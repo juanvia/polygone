@@ -13,18 +13,22 @@ let make = (~state: Model.State.t) => {
   // First make up a transformation function...
   
   let terms_length = Array.length(terms);
+  
+  module TermsSeparator = { 
+    [@react.component] let make = (~term_index) => 
+      term_index < terms_length 
+        ? " + " |> ReasonReact.string 
+        : <span/> 
+  };
 
-  let monomial_of_term = (term_index, term) =>
-    <span key={term_index |> string_of_int}>
-      <Coefficient term_index coefficient_notation terms_length />
-      <Variables term variables_notation />
-      {switch (term_index) {
-       | x when x < terms_length - 1 => " + " |> ReasonReact.string
-       | _ => "" |> ReasonReact.string
-       }}
-    </span>;
+  let monomial_of_term = (term_index, term) => <span key={term_index |> string_of_int}>
+    <Coefficient    term_index   coefficient_notation   terms_length />
+    <Variables      term         variables_notation                  />
+    <TermsSeparator term_index                                       />
+  </span>;
 
   // ...next use that transformation function in each of terms given.
+
   // And embed the monomials array in a fragment.
   <> {Array.mapi(monomial_of_term, terms) |> ReasonReact.array} </>;
 };

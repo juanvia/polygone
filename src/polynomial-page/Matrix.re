@@ -7,17 +7,17 @@ let make = (~state: Model.State.t) => {
     };
 
   <>
-    <GridRow>
-      <GridColumn>
+    <Grid.Row>
+      <Grid.Columns cols={1}>
         <MatrixTitle state />
-      </GridColumn>
-    </GridRow>
+      </Grid.Columns>
+    </Grid.Row>
     
-    <GridRow>
-      <GridTwelveColumns>
+    <Grid.Row>
+      <Grid.Columns cols={12}>
         <code className="the-matrix"> exponents->ReasonReact.string </code>
-      </GridTwelveColumns>
-    </GridRow>
+      </Grid.Columns>
+    </Grid.Row>
 
   </>;
 };

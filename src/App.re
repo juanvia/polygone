@@ -19,32 +19,32 @@
 let make = () => {
   let (state, dispatch) = Model.State.(React.useReducer(reducer, initial_state));
 
-  <GridContainer>
+  <Grid.Container>
 
-    <GridRow>
+    <Grid.Row>
 
-      <GridTwoColumns>
+      <Grid.Columns cols={2}>
 
         <Sidebar />
       
-      </GridTwoColumns>
+      </Grid.Columns>
 
 
-      <GridNineColumns>
+      <Grid.Columns cols={9}>
         
         <PolynomialPage state dispatch/>
       
-      </GridNineColumns>
+      </Grid.Columns>
       
 
-      <GridOneColumn>
+      <Grid.Columns cols={1}>
 
         <span/>
 
-      </GridOneColumn>
+      </Grid.Columns>
     
-    </GridRow>
+    </Grid.Row>
   
-  </GridContainer>
+  </Grid.Container>
   
 };

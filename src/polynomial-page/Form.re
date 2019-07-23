@@ -40,16 +40,17 @@
     ;
 
     <>
+    
       
-      <GridRow>
-        <GridTwelveColumns>
+      <Grid.Row>
+        <Grid.Columns cols={12}>
           <SectionHeader title deck />
-        </GridTwelveColumns>
-      </GridRow>
+        </Grid.Columns>
+      </Grid.Row>
       
-      <GridRow>
+      <Grid.Row>
 
-        <GridColumn>
+        <Grid.Columns cols={1}>
           <SelectionCard
             defaultValue  = dim
             title         = dim_title
@@ -57,9 +58,9 @@
             options       = dim_options
             handleChange  = dim_change_handler
           />
-        </GridColumn>
+        </Grid.Columns>
         
-        <GridColumn>
+        <Grid.Columns cols={1}>
           <SelectionCard
             defaultValue  = deg
             title         = deg_title
@@ -67,9 +68,9 @@
             options       = deg_options
             handleChange  = deg_change_handler
           />
-        </GridColumn>
+        </Grid.Columns>
         
-        <GridColumn>
+        <Grid.Columns cols={1}>
           <SelectionCard
             defaultValue  = cof
             title         = cof_title
@@ -77,9 +78,9 @@
             options       = cof_options
             handleChange  = cof_change_handler
           />
-        </GridColumn>
+        </Grid.Columns>
         
-        <GridColumn>
+        <Grid.Columns cols={1}>
           <SelectionCard
             defaultValue  = var
             title         = var_title
@@ -87,9 +88,9 @@
             options       = var_options
             handleChange  = var_change_handler
           />
-        </GridColumn>
+        </Grid.Columns>
 
-      </GridRow>
+      </Grid.Row>
 
     </>
     

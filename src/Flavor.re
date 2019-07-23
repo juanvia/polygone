@@ -9,14 +9,14 @@ let flavor_of_string = s =>
   | _ => Pedantic
   };
 
-let string_of_flavor = f =>
-  switch (f) {
+let string_of_flavor = flavor =>
+  switch (flavor) {
   | Traditional => "traditional"
-  | Pedantic => "pedantic"
+  | Pedantic    => "pedantic"
   };
 
 let flavor_options =
   <>
-    <option value="traditional"> "Traditional"->ReasonReact.string </option>
-    <option value="pedantic"> "Pedantic"->ReasonReact.string </option>
+    <option value="traditional"> "Traditional" -> ReasonReact.string </option>
+    <option value="pedantic">    "Pedantic"    -> ReasonReact.string </option>
   </>;
