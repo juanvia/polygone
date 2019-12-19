@@ -47,36 +47,29 @@ ramda_1.map(Number) // array of chars to array of numbers (one digit each)
  *
  *          0      1      2
  * ```
- *
- * In this example n=2 (two-dimensional space) and also m=2 (max value in table)
- * then the valid points are (1,0), (0,0), (0,1), (2,0), (1,1) and (0,2)
- * because the digit sum of all of those is less or equal to 2
- * Note that in base-3 (m+1) the first nine numbers are 00, 01, 02, 10, 11, 12, 20, 21 and 22
- *
- * There is a bijection betwen A and the non-negative integers from
- * zero to (m+1)^n-1. Also A can be viewed as the set of those integers expressed in
- * base (m+1). The algorithm takes advantage of that.
- *
  * @param dim The number of dimensions the phase space A
  * @param deg Must be the max value the coordinates that the points of A can have
  * @returns The valid points in a `n`-dimensional and `n`ic phase space
  *
  */
-var takeValidPoints = function (dim, deg) {
+var takeValidPoints = function (dimensions, totalDegree) {
+    var appendAnotherDimension = function (totalDegree, points) {
+        var result = [];
+        console.log('old points', points);
+        points.forEach(function (point) {
+            // Append one more dimension
+            for (var degree = 0; degree <= totalDegree; ++degree)
+                result.push(point.concat([degree]));
+        });
+        console.log('new points', result);
+        return result;
+    };
     // Initialize the list of valid points to empty
-    var valids = [];
-    // All the posibilities are taken into account
-    var phaseSpaceCardinality = Math.pow((deg + 1), dim);
-    // Visits the entire phase space searching for good points
-    for (var ordinal = 0; ordinal < phaseSpaceCardinality; ++ordinal) {
-        // the number expressed in base <deg+1>. This is the punch line!
-        var point = transform(dim, deg + 1, ordinal);
-        // the point tested (and adopted if its digits sum is adequate)
-        if (point.reduce(ramda_1.add, 0) <= deg) {
-            valids.push(point);
-        }
+    var points = [[]];
+    for (var dim = 1; dim <= dimensions; ++dim) {
+        points = appendAnotherDimension(totalDegree, points);
     }
-    return valids;
+    return points.filter(function (point) { return point.reduce(ramda_1.add, 0) <= totalDegree; });
 };
 /**
  * Returns a matrix where each row is a exponents array for each term in the polynomial.
