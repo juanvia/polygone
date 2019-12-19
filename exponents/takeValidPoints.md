@@ -29,16 +29,16 @@ const takeValidPoints = (dimensions: number, totalDegree: number): number[][] =>
 ```
 ## The algorithm
 
-        How to append one more dimension to a space:
-        
-        For each point in the initial space
-            For each possible value in those spaces
-                Add that value to the point (incrementing the vector's dimensions)
+    How to append one more dimension to a space:
+    
+    For each point in the initial space
+        For each possible value in those spaces
+            Add that value to the point (incrementing the vector's dimensions)
 
-        How to generate an exponents matrix:
+    How to generate an exponents matrix:
 
-        From empty until the space reaches the desired dimensions
-            Append one more dimension to that space
+    From empty until the space reaches the desired dimensions
+        Append one more dimension to that space
 
 
 
@@ -62,7 +62,7 @@ And see the dimensions of our space (2, two variables).
 
 ### Why 6 monomials?
 
-    If whe repeat the arrange of exponents e. g. f(x) = 5xy + 3xy always we can normalize the polynomial rewriting it as f(x) = 8xy. In the following considerations we will work with normalized polynomials.
+>If whe repeat the arrange of exponents e. g. f(x) = 5xy + 3xy always we can normalize the polynomial rewriting it as f(x) = 8xy. In the following considerations we will work with normalized polynomials.
 
 For each dimension (x and y) we have 3 value choices for the exponent (0,1,2).
 In general that is ```degree+1```. Again: All possible values in a certain dimension are 0, 1 or 2. The cardinality of that dimension is ```degree+1``` (3 in this case).
