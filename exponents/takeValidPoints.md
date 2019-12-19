@@ -3,6 +3,7 @@
 ```
 const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
+  
   const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] => {
     let result: number[][] = []
     points.forEach(point => {
@@ -12,6 +13,8 @@ const takeValidPoints = (dimensions: number, totalDegree: number): number[][] =>
     })
     return result
   }
+
+
   // Initialize the list of valid points to empty
   let points: number[][] = [[]]
 
@@ -77,7 +80,7 @@ For each dimension (x and y) we have 3 value choices for the exponent (0,1,2) th
 ```
 How we can generate this matrix?
 
-One way is iterarively append a new dimension to a previous space, let's say generate a surface from a line or a volume from a surface, adding the new dimension points to each point in the initial space. In our case:
+One way is iteratively append a new dimension to a previous space, let's say generate a surface from a line or a volume from a surface, adding the new dimension points to each point in the initial space. In our case:
 
  - Start with the empty space (_really_ empty, _meta_ empty) like [[]].
  - Append the first dimension. And obtain [[0],[1],[2]].

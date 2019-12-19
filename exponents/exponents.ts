@@ -65,6 +65,7 @@ const transform = (size: number, base: number, value: number): number[] => pipe(
 
 const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
+
   const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] => {
     let result: number[][] = []
     points.forEach(point => {
@@ -74,6 +75,8 @@ const takeValidPoints = (dimensions: number, totalDegree: number): number[][] =>
     })
     return result
   }
+
+  
   // Initialize the list of valid points to empty
   let points: number[][] = [[]]
 

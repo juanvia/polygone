@@ -55,13 +55,11 @@ ramda_1.map(Number) // array of chars to array of numbers (one digit each)
 var takeValidPoints = function (dimensions, totalDegree) {
     var appendAnotherDimension = function (totalDegree, points) {
         var result = [];
-        console.log('old points', points);
         points.forEach(function (point) {
             // Append one more dimension
             for (var degree = 0; degree <= totalDegree; ++degree)
                 result.push(point.concat([degree]));
         });
-        console.log('new points', result);
         return result;
     };
     // Initialize the list of valid points to empty
