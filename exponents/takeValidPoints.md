@@ -112,7 +112,7 @@ In the generated matrix there are invalid points:
 
 The algorithm then removes the three invalid points...
 
-...and because **that** we have 6 monomials out of 9 possibles ones.
+...and because **that** we have 6 monomials out of 9 possible ones.
 
 
 
