@@ -35,7 +35,7 @@ const takeValidPoints = (dimensions: number, totalDegree: number): number[][] =>
         How to generate an exponents matrix:
 
         From empty until the space reaches the desired dimensions
-            Append uno more dimension to that space
+            Append one more dimension to that space
 
 
 
