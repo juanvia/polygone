@@ -1,4 +1,5 @@
 
+## The code
 ```
 const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
@@ -23,6 +24,22 @@ const takeValidPoints = (dimensions: number, totalDegree: number): number[][] =>
 
 }
 ```
+## The algorithm
+
+        How to append one more dimension to a space:
+        
+        For each point in the initial space
+            For each possible value in those spaces
+                Add that value to the point (incrementing the vector's dimensions)
+
+        How to generate an exponents matrix:
+
+        From empty until the space reach the desired dimensions
+            Append uno more dimension to that space
+
+
+
+## The rationale
 
 Let's say we got
 
@@ -36,13 +53,13 @@ And see the exponents involved.
 
 And see the monomials. There are 6.
 
-And see the total degree (2, the maximum of the sum of exponents in each monomial)
+And see the total degree (2, the maximum of the sum of exponents in each monomial).
 
-And see the dimensions of our space (2, two variables)
+And see the dimensions of our space (2, two variables).
 
 ### Why 6 monomials?
 
-If whe repeat the arrange of exponents i.e. f(x) = 5x<sup>1</sup>y<sup>1</sup> + 3x<sup>1</sup>y<sup>1</sup> always we can normalize the polynomial rewriting it as f(x) = 8x<sup>1</sup>y<sup>1</sup>. In the following considerations we will work with normalized polynomials.
+If whe repeat the arrange of exponents e. g. f(x) = 5x<sup>1</sup>y<sup>1</sup> + 3x<sup>1</sup>y<sup>1</sup> always we can normalize the polynomial rewriting it as f(x) = 8x<sup>1</sup>y<sup>1</sup>. In the following considerations we will work with normalized polynomials.
 
 For each dimension (x and y) we have 3 value choices for the exponent (0,1,2) therefore the number of all possible combinations is 9 (3<sup>2</sup>, permutations with repetition). They are:
 
@@ -60,14 +77,15 @@ For each dimension (x and y) we have 3 value choices for the exponent (0,1,2) th
 ```
 How we can generate this matrix?
 
-One way is iterarively append a new dimension to a initial space, let's say generate a surface from a line or a volume from a surface, adding the new dimension points to each point in the initial space. In our case:
+One way is iterarively append a new dimension to a previous space, let's say generate a surface from a line or a volume from a surface, adding the new dimension points to each point in the initial space. In our case:
 
- - Start with the empty space (_really_ empy, _meta_ empty) like [[]]
- - Append the first dimension, and obtain [[0],[1],[2]]
- - Append the second dimension, and obtain [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]]
+ - Start with the empty space (_really_ empty, _meta_ empty) like [[]].
+ - Append the first dimension. And obtain [[0],[1],[2]].
+ - Append the second dimension. And obtain [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2],[2,0],[2,1],[2,2]].
 
 
 ### In summary
+
         How to append one more dimension to a space:
         
         For each point in the initial space
@@ -89,12 +107,12 @@ In the generated matrix there are invalid points:
     [2,1] Ops!
     [2,2] Ops!
 
-```
     The Ops! ones have a sum of exponents greater than se total degree!
+```
 
 The algorithm then removes the three invalid points...
 
-...and because that we have 6 monomials out of 9 possibles ones.
+...and because **that** we have 6 monomials out of 9 possibles ones.
 
 
 
