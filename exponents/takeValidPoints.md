@@ -107,7 +107,7 @@ In the generated matrix there are invalid points:
     [2,1] Ops!
     [2,2] Ops!
 
-    The Ops! ones have a sum of exponents greater than se total degree!
+    The Ops! ones have a sum of exponents greater than the total degree!
 ```
 
 The algorithm then removes the three invalid points...
