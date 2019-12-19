@@ -62,9 +62,14 @@ And see the dimensions of our space (2, two variables).
 
 ### Why 6 monomials?
 
-If whe repeat the arrange of exponents e. g. f(x) = 5x<sup>1</sup>y<sup>1</sup> + 3x<sup>1</sup>y<sup>1</sup> always we can normalize the polynomial rewriting it as f(x) = 8x<sup>1</sup>y<sup>1</sup>. In the following considerations we will work with normalized polynomials.
+    If whe repeat the arrange of exponents e. g. f(x) = 5xy + 3xy always we can normalize the polynomial rewriting it as f(x) = 8xy. In the following considerations we will work with normalized polynomials.
 
-For each dimension (x and y) we have 3 value choices for the exponent (0,1,2) therefore the number of all possible combinations is 9 (3<sup>2</sup>, permutations with repetition). They are:
+For each dimension (x and y) we have 3 value choices for the exponent (0,1,2).
+In general that is ```degree+1```. Again: All possible values in a certain dimension are 0, 1 or 2. The cardinality of that dimension is ```degree+1``` (3 in this case).
+
+Therefore the number of all possible combinations is 9 (3<sup>2</sup>, (degree+1)<sup>dimensions</sup>, permutations with repetition). 
+
+They are:
 
 ```
     [0,0]
