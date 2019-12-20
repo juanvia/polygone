@@ -65,13 +65,12 @@ const transform = (size: number, base: number, value: number): number[] => pipe(
 
 const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
+  const allPossibleValues = Array(totalDegree+1).fill(0).map( (v,i) => i)
 
   const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] => {
     let result: number[][] = []
     points.forEach(point => {
-      // Append one more dimension
-      for (let degree = 0; degree <= totalDegree; ++degree)
-        result.push(point.concat([degree]))
+        result.concat(allPossibleValues.map(value => point.concat([value])))
     })
     return result
   }
