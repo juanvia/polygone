@@ -63,19 +63,46 @@ const transform = (size: number, base: number, value: number): number[] => pipe(
  *
  */
 
-const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
-  const allPossibleValues = Array(totalDegree+1).fill(0).map( (v,i) => i)
+
+
+ // =====================================================================================
+ // FUNCTIONAL VERSION, MORE MESSY, A LOT SLOWER
+
+// const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
+
+//   const allPossibleValues: number[] = Array(totalDegree + 1).fill(0).map((v, i) => i)
+
+//   const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] =>
+//     points.reduce((result: number[][], point: number[]) =>
+//       result.concat(allPossibleValues.map(value => point.concat([value])))
+//       , [])
+
+//   // Initialize the list of valid points to empty
+//   let points: number[][] = [[]]
+
+//   for (let dim = 1; dim <= dimensions; ++dim) {
+//     points = appendAnotherDimension(totalDegree, points)
+//   }
+
+//   return points.filter(point => point.reduce(add, 0) <= totalDegree)
+
+// }
+ // =====================================================================================
+
+const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
   const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] => {
     let result: number[][] = []
     points.forEach(point => {
-        result.concat(allPossibleValues.map(value => point.concat([value])))
+      // Append one more dimension replacing each point with (totalDegree+1) new dimensions points
+      for (let degree = 0; degree <= totalDegree; ++degree)
+        result.push(point.concat([degree]))
     })
     return result
   }
 
-  
+
   // Initialize the list of valid points to empty
   let points: number[][] = [[]]
 
