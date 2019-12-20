@@ -1,17 +1,26 @@
 
 ## The code
-```
+```typescript
+
 const takeValidPoints = (dimensions: number, totalDegree: number): number[][] => {
 
   
-  const appendAnotherDimension = (totalDegree: number, points: number[][]): number[][] => {
-    let result: number[][] = []
-    points.forEach(point => {
-      // Append one more dimension
-      for (let degree = 0; degree <= totalDegree; ++degree)
-        result.push(point.concat([degree]))
+  const appendAnotherDimension = (totalDegree: number, oldSpacePoints: number[][]): number[][] => {
+    
+    // Append one more dimension replacing each point with (totalDegree+1) new dimensions points
+    
+    let newSpacePoints: number[][] = []
+    
+    oldSpacePoints.forEach(seedPoint => {
+      
+      // use all possible values to generate new points
+      for (let value = 0; value <= totalDegree; ++value)
+        newSpacePoints.push(seedPoint.concat([value]))
+        
     })
-    return result
+    
+    return newSpacePoints
+  
   }
 
 

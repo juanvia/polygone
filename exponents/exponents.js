@@ -69,14 +69,15 @@ ramda_1.map(Number) // array of chars to array of numbers (one digit each)
 // }
 // =====================================================================================
 var takeValidPoints = function (dimensions, totalDegree) {
-    var appendAnotherDimension = function (totalDegree, points) {
-        var result = [];
-        points.forEach(function (point) {
-            // Append one more dimension replacing each point with (totalDegree+1) new dimensions points
-            for (var degree = 0; degree <= totalDegree; ++degree)
-                result.push(point.concat([degree]));
+    var appendAnotherDimension = function (totalDegree, oldSpacePoints) {
+        // Append one more dimension replacing each point with (totalDegree+1) new dimensions points
+        var newSpacePoints = [];
+        oldSpacePoints.forEach(function (seedPoint) {
+            // use all possible values to generate new points
+            for (var value = 0; value <= totalDegree; ++value)
+                newSpacePoints.push(seedPoint.concat([value]));
         });
-        return result;
+        return newSpacePoints;
     };
     // Initialize the list of valid points to empty
     var points = [[]];
